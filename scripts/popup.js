@@ -2,10 +2,11 @@
 document.getElementById("save").onclick = () => {
     let macro_array = {};
 
-    for (i=0; i<5; i++) {
+    for (i=0; i<4; i++) {
         key = "macro" + i.toString()
         data = document.getElementById(key).value;
-        if (!data) break;
+
+        if (!data) continue;
 
         macro_array[key] = data;
     }
@@ -17,11 +18,9 @@ document.getElementById("save").onclick = () => {
 //사이드바 열릴 때
 whale.sidebarAction.onClicked.addListener(result => {
     if (result.opened) {
-        console.log("sidebar open");
         whale.storage.sync.get(["key_macro"], (res) => {
             if(res) {
                 for (let key in res.key_macro) {
-                    console.log(res.key_macro[key]);
                     document.getElementById(key).value = res.key_macro[key]
                 }
             }
@@ -31,11 +30,9 @@ whale.sidebarAction.onClicked.addListener(result => {
 
 //앱 실행시
 window.onload = function() {
-    console.log("Extension has started...");
     whale.storage.sync.get(["key_macro"], (res) => {
         if(res) {
             for (let key in res.key_macro) {
-                console.log(res.key_macro[key]);
                 document.getElementById(key).value = res.key_macro[key]
             }
         }
