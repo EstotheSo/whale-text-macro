@@ -1,3 +1,4 @@
-whale.runtime.onMessage.addListener((msg) => {
-    console.log(msg.data);
-});
+
+
+
+//document.getElementById(document.activeElement.id).value += "test";
