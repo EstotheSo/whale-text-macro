@@ -13,35 +13,17 @@ whale.runtime.onInstalled.addListener((details) => {
 });
 
 function paste_key_macro(txt) {
-    if (document.activeElement.id) {
-        document.getElementById(document.activeElement.id).value += txt;
-    } else if (document.activeElement.class) {
-        console.log(document.activeElement.class)
-        document.getElementsByClass(document.activeElement.name).value += txt;
-    }
-
+    //data = document.activeElement.tagName;
+    //console.log(data);
+    document.activeElement.value += txt;
 }
 
+// 단축키 누를 때 실행
 whale.commands.onCommand.addListener((command) => {
     whale.storage.sync.get(["key_macro"], (res) => {
         if (res.key_macro) {
             if (res.key_macro[command]) {
                 console.log(res.key_macro[command]);
-
-                switch (command) {
-                    case 'macro0':
-                        console.log("macro0");
-                        break;
-                    case 'macro1':
-                        console.log("macro1");
-                        break;
-                    case 'macro2':
-                        console.log("macro2");
-                        break;
-                    case 'macro3':
-                        console.log("macro3");
-                        break;
-                }
 
                 whale.tabs.query({ active: true, currentWindow: true}, (tabs) => {
                     whale.scripting.executeScript({
