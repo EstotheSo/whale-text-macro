@@ -40,28 +40,28 @@
                 "default": "Ctrl+Shift+1"
             },
             "description": "macro1",
-            "global": false
+            "global": true
         },
         "macro1": {
             "suggested_key": {
                 "default": "Ctrl+Shift+2"
             },
             "description": "macro2",
-            "global": false
+            "global": true
         },
         "macro2": {
             "suggested_key": {
                 "default": "Ctrl+Shift+3"
             },
             "description": "macro3",
-            "global": false
+            "global": true
         },
         "macro3": {
             "suggested_key": {
                 "default": "Ctrl+Shift+4"
             },
             "description": "macro4",
-            "global": false
+            "global": true
         }
     }
 }

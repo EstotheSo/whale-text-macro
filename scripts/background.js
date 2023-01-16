@@ -13,9 +13,11 @@ whale.runtime.onInstalled.addListener((details) => {
 });
 
 function paste_key_macro(txt) {
-    //data = document.activeElement.tagName;
-    //console.log(data);
-    document.activeElement.value += txt;
+    navigator.clipboard.writeText(txt).then(() => {
+        navigator.clipboard.readText().then((clipTxt) => {
+            document.activeElement.value += txt;
+        })
+    });
 }
 
 // 단축키 누를 때 실행
