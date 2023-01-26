@@ -38,3 +38,10 @@ window.onload = function() {
         }
     });
 };
+
+document.getElementById("shortcut").onclick = () => {
+    location.href='/index.html'
+}
+document.getElementById("context").onclick = () => {
+    location.href='/context_menu.html'
+}
