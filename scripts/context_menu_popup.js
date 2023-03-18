@@ -17,7 +17,7 @@ document.getElementById("add").onclick = () => {
   );
   $("#add_macro").append(
     `<div><textarea name="context_input" id="context_contents_${context_macro_cnt}" placeholder="내용을 입력하세요."></textarea>
-    <button type="button" id="delete_${context_macro_cnt}" class="btn btn-default">삭제</button></div>`
+    <button type="button" class="btn btn-default delete_btn">삭제</button></div>`
   );
 };
 
@@ -37,11 +37,13 @@ document.getElementById("save").onclick = () => {
 //onclick 이벤트 발생시 상위 태그의 아이디를 this.으로 획득
 //https://orange056.tistory.com/96
 //태그도 ul, li로 바꾸는게 좋을듯
-document.getElementById("delete_0").onclick = () => {
-  if (context_macro_cnt > 1) {
-    context_macro_cnt -= 1;
-  }
+
+/*
+document.getElementsByName("delete_btn").onclick = (e) => {
+  console.log(e.target.id);
 };
+*/
+
 //앱 실행시
 window.onload = function () {
   whale.storage.sync.get(["context_macro_cnt"], (res) => {
