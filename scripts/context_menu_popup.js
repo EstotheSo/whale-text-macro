@@ -19,6 +19,13 @@ document.getElementById("add").onclick = () => {
     `<div><textarea name="context_input" id="context_contents_${context_macro_cnt}" placeholder="내용을 입력하세요."></textarea>
     <button type="button" class="btn btn-default delete_btn">삭제</button></div>`
   );
+
+  let del_buttons = document.getElementsByClassName("delete_btn");
+  for (let i = 0; i < del_buttons.length; i++) {
+    del_buttons[i].onclick = (e) => {
+      //console.log(e.target.id);
+    };
+  }
 };
 
 //저장 버튼 클릭
@@ -37,12 +44,6 @@ document.getElementById("save").onclick = () => {
 //onclick 이벤트 발생시 상위 태그의 아이디를 this.으로 획득
 //https://orange056.tistory.com/96
 //태그도 ul, li로 바꾸는게 좋을듯
-
-/*
-document.getElementsByName("delete_btn").onclick = (e) => {
-  console.log(e.target.id);
-};
-*/
 
 //앱 실행시
 window.onload = function () {
