@@ -13,22 +13,24 @@ document.getElementById("add").onclick = () => {
   //$("#add_macro").append(`<h3>매크로 ${context_macro_cnt}</h3>`);
   console.log(context_macro_cnt);
   $("#add_macro").append(
-    `<div><input type="text" name="context_input" id="context_title_${context_macro_cnt}" placeholder="제목" /></div>`
-  );
-  $("#add_macro").append(
-    `<div><textarea name="context_input" id="context_contents_${context_macro_cnt}" placeholder="내용을 입력하세요."></textarea>
-    <button type="button" class="btn btn-default delete_btn">삭제</button></div>`
+    `<li id="context_${context_macro_cnt}"><div><input type="text" name="context_input" placeholder="제목" /></div>
+     <div><textarea name="context_input" placeholder="내용을 입력하세요."></textarea>
+     <button type="button" class="btn btn-default delete_btn">삭제</button></div></li>`
   );
 
+  //매크로 입력 칸이 추가 될 때마다 삭제 버튼 클릭 이벤트 리스너 등록
   let del_buttons = document.getElementsByClassName("delete_btn");
   for (let i = 0; i < del_buttons.length; i++) {
     del_buttons[i].onclick = (e) => {
-      //console.log(e.target.id);
+      let li_node = e.target.parentElement.parentElement.id;
+
+      $("#" + li_node).remove();
     };
   }
 };
 
 //저장 버튼 클릭
+//저장할 때마다 입력된 매크로 전체를 훑고 태그 넘버 리네이밍
 document.getElementById("save").onclick = () => {
   const save_context_macro_port = whale.runtime.connect({
     name: `save_context_macro`,
@@ -36,14 +38,13 @@ document.getElementById("save").onclick = () => {
 
   save_context_macro_port.postMessage(context_macro_cnt);
 
-  for (i = 0; i < context_macro_cnt; i++) {}
-};
+  const ul_node = document.getElementById("add_macro");
+  const li_nodes = ul_node.getElementsByTagName("li");
 
-//삭제 버튼 클릭
-//삭제 버튼을 일괄적으로 name이나 class로 묶고
-//onclick 이벤트 발생시 상위 태그의 아이디를 this.으로 획득
-//https://orange056.tistory.com/96
-//태그도 ul, li로 바꾸는게 좋을듯
+  for (i = 0; i < li_nodes.length; i++) {
+    li_nodes[i].setAttribute("id", "context_" + String(i + 1));
+  }
+};
 
 //앱 실행시
 window.onload = function () {

@@ -25,29 +25,32 @@
     </header>
 
     <div class="main">
-      <div id="add_macro">
-        <div>
-          <button type="button" id="add" class="btn btn-default">추가</button>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            name="context_input"
-            id="context_title_1"
-            placeholder="제목"
-          />
-        </div>
-        <div>
-          <textarea
-            name="context_input"
-            id="context_contents_1"
-            placeholder="내용을 입력하세요."
-          ></textarea>
-
-          <button type="button" class="btn btn-default delete_btn">삭제</button>
-        </div>
+      <div>
+        <button type="button" id="add" class="btn btn-default">추가</button>
       </div>
+      <ul id="add_macro">
+        <li id="context_1">
+          <div>
+            <input
+              type="text"
+              name="context_input"
+              id="context_title_1"
+              placeholder="제목"
+            />
+          </div>
+          <div>
+            <textarea
+              name="context_input"
+              id="context_contents_1"
+              placeholder="내용을 입력하세요."
+            ></textarea>
+
+            <button type="button" class="btn btn-default delete_btn">
+              삭제
+            </button>
+          </div>
+        </li>
+      </ul>
 
       <div>
         <button type="button" id="save" class="btn btn-default">저장</button>
@@ -55,8 +58,8 @@
     </div>
 
     <div class="bottom">
-      <button id="shortcut">단축키 지정 창</button>
-      <button id="context">컨텍스트 지정 창</button>
+      <button id="shortcut">단축키 매크로</button>
+      <button id="context">컨텍스트 매크로</button>
     </div>
 
     <script type="text/javascript" src="scripts/context_menu_popup.js"></script>
