@@ -6,9 +6,16 @@ whale.runtime.onConnect.addListener((port) => {
     });
   }
 
-  if (port.name === `save_context_macro`) {
+  if (port.name === `save_context_macro_cnt`) {
     port.onMessage.addListener((msg) => {
       whale.storage.sync.set({ context_macro_cnt: msg });
+    });
+  }
+
+  if (port.name === `save_cntxt_data`) {
+    port.onMessage.addListener((msg) => {
+      console.log(msg[0]);
+      whale.storage.sync.set({ cntxt_macro_data: msg });
     });
   }
 });
@@ -32,8 +39,6 @@ whale.commands.onCommand.addListener((command) => {
   whale.storage.sync.get(["key_macro"], (res) => {
     if (res.key_macro) {
       if (res.key_macro[command]) {
-        console.log(res.key_macro[command]);
-
         whale.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           whale.scripting.executeScript({
             target: { tabId: tabs[0].id, allFrames: true },
