@@ -18,25 +18,13 @@ document.getElementById("save").onclick = () => {
 //사이드바 열릴 때
 whale.sidebarAction.onClicked.addListener((result) => {
   if (result.opened) {
-    whale.storage.sync.get(["key_macro"], (res) => {
-      if (res) {
-        for (let key in res.key_macro) {
-          document.getElementById(key).value = res.key_macro[key];
-        }
-      }
-    });
+    getKeyMacroData();
   }
 });
 
 //앱 실행시
 window.onload = function () {
-  whale.storage.sync.get(["key_macro"], (res) => {
-    if (res) {
-      for (let key in res.key_macro) {
-        document.getElementById(key).value = res.key_macro[key];
-      }
-    }
-  });
+  getKeyMacroData();
 };
 
 document.getElementById("shortcut").onclick = () => {
@@ -45,3 +33,13 @@ document.getElementById("shortcut").onclick = () => {
 document.getElementById("context").onclick = () => {
   location.href = "/context_menu.html";
 };
+
+function getKeyMacroData() {
+  whale.storage.sync.get(["key_macro"], (res) => {
+    if (res) {
+      for (let key in res.key_macro) {
+        document.getElementById(key).value = res.key_macro[key];
+      }
+    }
+  });
+}

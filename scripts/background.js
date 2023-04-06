@@ -6,15 +6,8 @@ whale.runtime.onConnect.addListener((port) => {
     });
   }
 
-  if (port.name === `save_context_macro_cnt`) {
-    port.onMessage.addListener((msg) => {
-      whale.storage.sync.set({ context_macro_cnt: msg });
-    });
-  }
-
   if (port.name === `save_cntxt_data`) {
     port.onMessage.addListener((msg) => {
-      console.log(msg[0]);
       whale.storage.sync.set({ cntxt_macro_data: msg });
     });
   }
