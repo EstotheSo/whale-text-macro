@@ -12,15 +12,7 @@ document.getElementById("context").onclick = () => {
 //추가 버튼 클릭
 document.getElementById("add").onclick = () => {
   $("#add_macro").append(ChildTagOf_li);
-
-  //매크로 입력 칸이 추가 될 때마다 삭제 버튼 클릭 이벤트 리스너 등록
-  let del_buttons = document.getElementsByClassName("delete_btn");
-  for (let i = 0; i < del_buttons.length; i++) {
-    del_buttons[i].onclick = (e) => {
-      let li_node = e.target.parentElement.parentElement;
-      li_node.remove();
-    };
-  }
+  registEventListenerDeleteBtn();
 };
 
 //저장 버튼 클릭
@@ -44,10 +36,8 @@ document.getElementById("save").onclick = () => {
       let context_obj = {
         [title_val]: content_val,
       };
-
       context_macro_arr[i] = context_obj;
     }
-
     save_context_macro_data_port.postMessage(context_macro_arr);
   }
 };
@@ -62,9 +52,9 @@ whale.sidebarAction.onClicked.addListener((result) => {
 //앱 실행시
 window.onload = function () {
   getContextData();
-  registEventListenerDeleteBtn();
 };
 
+//앱을 실행하거나 사이드 바를 열고 닫을 때 저장한 그대로 매크로 내용을 출력
 function getContextData() {
   whale.storage.sync.get(["cntxt_macro_data"], (res) => {
     if (res) {
@@ -87,16 +77,20 @@ function getContextData() {
           title_arr[idx].value = keyOfData;
           content_arr[idx].value = data[keyOfData];
         });
+        registEventListenerDeleteBtn();
       }
     }
   });
 }
 
-//저장 누르고 삭제 시 삭제가 안됨, 다시 추가 누르고 삭제하면 됨
+//삭제 버튼을 순회하며 클릭 이벤트 등록
+//getContextData 내부에서 호출해야 정삭적으로 등록됨
 function registEventListenerDeleteBtn() {
   let del_buttons = document.getElementsByClassName("delete_btn");
+  //console.log(del_buttons.length);
   for (let i = 0; i < del_buttons.length; i++) {
     del_buttons[i].onclick = (e) => {
+      console.log("ㅜㅜ");
       let li_node = e.target.parentElement.parentElement;
       li_node.remove();
     };

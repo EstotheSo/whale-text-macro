@@ -13,7 +13,21 @@ whale.runtime.onConnect.addListener((port) => {
   }
 });
 
-whale.runtime.onInstalled.addListener((details) => {
+/*
+Uncaught TypeError: Error in invocation of contextMenus.
+
+create(object createProperties, optional function callback): 
+Error at parameter 'createProperties': Error at property 'contexts': 
+Error at index 0: Value must be one of action, all, audio, browser_action, editable, frame, image, launcher, link, page, page_action, selection, video.
+*/
+//콘텍스트 메뉴 추가
+whale.contextMenus.create({
+  title: `텍스트 매크로`,
+  contexts: `selection`,
+  onclick: searchText,
+});
+
+whale.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === "install") {
     // 최초 설치 시 실행
   }
@@ -43,3 +57,13 @@ whale.commands.onCommand.addListener((command) => {
     }
   });
 });
+
+function searchText(info) {
+  const myQuery = encodeURI(
+    `https://search.naver.com/search.naver?query=${info.selectionText}`
+  );
+
+  whale.tabs.create({
+    url: myQuery,
+  });
+}

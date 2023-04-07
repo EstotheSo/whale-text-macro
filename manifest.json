@@ -21,7 +21,10 @@
       "js": ["scripts/contentscript.js"]
     }
   ],
-  "permissions": ["tabs", "storage", "activeTab", "scripting"],
+  "permissions": ["tabs", "storage", "activeTab", "scripting", "contextMenus"],
+  "icons": {
+    "16": "images/icon.png"
+  },
   "host_permissions": ["*://*/*"],
   "commands": {
     "macro0": {
