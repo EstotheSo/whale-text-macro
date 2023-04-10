@@ -90,7 +90,6 @@ function registEventListenerDeleteBtn() {
   //console.log(del_buttons.length);
   for (let i = 0; i < del_buttons.length; i++) {
     del_buttons[i].onclick = (e) => {
-      console.log("ㅜㅜ");
       let li_node = e.target.parentElement.parentElement;
       li_node.remove();
     };
