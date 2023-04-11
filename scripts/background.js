@@ -10,10 +10,18 @@ whale.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener((msg) => {
       whale.storage.sync.set({ cntxt_macro_data: msg });
 
+      whale.contextMenus.removeAll();
+
       for (let i = 0; i < msg.length; i++) {
+        let macro_title = Object.keys(msg[i])[0];
+
+        if (macro_title === "") {
+          macro_title = "빈 제목";
+        }
+
         let contextMenuProp = {
           id: i.toString(),
-          title: Object.keys(msg[i][0]), // -> 이부분 string 값이어야 함
+          title: macro_title,
           type: "checkbox",
           contexts: ["all"],
         };
@@ -24,28 +32,43 @@ whale.runtime.onConnect.addListener((port) => {
   }
 });
 
-/*
-//콘텍스트 메뉴 추가
-        whale.contextMenus.create({
-          id: i, // 식별자
-          title: macroTitle, // 컨텍스트 메뉴에서 보여지는 글자
-          type: "checkbox", // 하위 컨텍스트 메뉴
-          contexts: ["all"], // 어떤 타입에 오른쪽 클릭하면 컨텍스트 메뉴가 활성화 될지 결정
-        });
-*/
-
-whale.runtime.onInstalled.addListener(async (details) => {
-  whale.storage.sync.get(["cntxt_macro_data"], (res) => {
-    if (res) {
-      if (res.cntxt_macro_data) {
-        console.log(res.cntxt_macro_data);
-      }
-    }
-  });
+//extension이 처음 실행되었을 때 실행
+//처음 실행된 이유를 분기로 나눌 수 있는데
+//첫 설치 or 새로운 버전의 extension update or chrome update
+//extension이나 chrome 업데이트 시에는 기존에 저장한 매크로 정보가 날라가면 안되지 않나..
+whale.runtime.onInstalled.addListener((details) => {
+  if (details.reason == "install") {
+    //맨 처음 인스톨 될 때 기본 콘텍스트 메뉴 추가
+    whale.contextMenus.create({
+      id: "first",
+      title: "없음",
+      type: "checkbox",
+      contexts: ["all"],
+    });
+  }
 });
 
+//등록된 컨텍스트 매크로 중 1개가 클릭됐을 때
 whale.contextMenus.onClicked.addListener((clickData) => {
-  console.log(clickData.menuItemId);
+  if (clickData.menuItemId !== "first") {
+    let idx = clickData.menuItemId;
+
+    // 여기서 호출될 때는 res가 무조건 있음. 없으면 컨텍스트 메뉴 자체가 생성이 안됨
+    whale.storage.sync.get(["cntxt_macro_data"], (res) => {
+      if (res) {
+        let cntxtMacroDataObj = res.cntxt_macro_data[idx];
+        let cntxtMacroDataTitle = Object.keys(cntxtMacroDataObj)[0];
+        let cntxtMacroDataContent = cntxtMacroDataObj[cntxtMacroDataTitle];
+
+        navigator.clipboard.writeText(cntxtMacroDataContent);
+
+        //입력이 가능한 태그에서 오른쪽 클릭 후 컨텍스트 메뉴를 클릭했을 때
+        if (clickData.editable === true) {
+          console.log("붙여넣기 가능");
+        }
+      }
+    });
+  }
 });
 
 function paste_key_macro(txt) {
