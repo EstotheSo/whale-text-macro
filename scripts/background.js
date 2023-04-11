@@ -60,6 +60,7 @@ whale.contextMenus.onClicked.addListener((clickData) => {
         let cntxtMacroDataTitle = Object.keys(cntxtMacroDataObj)[0];
         let cntxtMacroDataContent = cntxtMacroDataObj[cntxtMacroDataTitle];
 
+        // 여기부터 수정
         navigator.clipboard.writeText(cntxtMacroDataContent);
 
         //입력이 가능한 태그에서 오른쪽 클릭 후 컨텍스트 메뉴를 클릭했을 때
