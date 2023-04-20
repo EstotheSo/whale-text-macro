@@ -21,34 +21,48 @@
   </head>
   <body>
     <header>
-      <h1>텍스트 매크로</h1>
+      <h1 style="text-align: center">텍스트 매크로</h1>
     </header>
 
     <div class="main">
       <div>
         <button type="button" id="add" class="btn btn-default">추가</button>
+
+        <button type="button" id="save" class="btn btn-default">저장</button>
       </div>
+
+      <br />
+
       <ul id="add_macro">
         <li name="context_data">
           <div>
-            <input type="text" name="context_input_title" placeholder="제목" />
+            <input
+              type="text"
+              name="context_input_title"
+              placeholder="제목"
+              size="35"
+              maxlength="51"
+            />
           </div>
           <div>
             <textarea
               name="context_input_content"
               placeholder="내용을 입력하세요."
+              rows="3"
+              cols="35"
             ></textarea>
 
-            <button type="button" class="btn btn-default delete_btn">
+            <button
+              type="button"
+              class="btn btn-default delete_btn"
+              style="display: block"
+            >
               삭제
             </button>
           </div>
+          <br />
         </li>
       </ul>
-
-      <div>
-        <button type="button" id="save" class="btn btn-default">저장</button>
-      </div>
     </div>
 
     <div class="bottom">

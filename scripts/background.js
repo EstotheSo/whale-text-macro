@@ -22,7 +22,7 @@ whale.runtime.onConnect.addListener((port) => {
         let contextMenuProp = {
           id: i.toString(),
           title: macro_title,
-          type: "checkbox",
+          type: "normal",
           contexts: ["all"],
         };
         //콘텍스트 메뉴 추가
@@ -60,22 +60,27 @@ whale.contextMenus.onClicked.addListener((clickData) => {
         let cntxtMacroDataTitle = Object.keys(cntxtMacroDataObj)[0];
         let cntxtMacroDataContent = cntxtMacroDataObj[cntxtMacroDataTitle];
 
-        // 여기부터 수정
-        navigator.clipboard.writeText(cntxtMacroDataContent);
-
-        //입력이 가능한 태그에서 오른쪽 클릭 후 컨텍스트 메뉴를 클릭했을 때
-        if (clickData.editable === true) {
-          console.log("붙여넣기 가능");
-        }
+        whale.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          whale.scripting.executeScript({
+            target: { tabId: tabs[0].id, allFrames: true },
+            func: copyAndPasteTxt,
+            args: [cntxtMacroDataContent],
+          });
+        });
       }
     });
   }
 });
 
-function paste_key_macro(txt) {
+function copyAndPasteTxt(txt) {
   navigator.clipboard.writeText(txt).then(() => {
     navigator.clipboard.readText().then((clipTxt) => {
-      document.activeElement.value += txt;
+      if (document.getSelection) {
+        document.activeElement.value = txt;
+      } else {
+        document.activeElement.value += txt;
+      }
+      //document.activeElement.value += txt;
     });
   });
 }
@@ -88,7 +93,7 @@ whale.commands.onCommand.addListener((command) => {
         whale.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           whale.scripting.executeScript({
             target: { tabId: tabs[0].id, allFrames: true },
-            func: paste_key_macro,
+            func: copyAndPasteTxt,
             args: [res.key_macro[command]],
           });
         });

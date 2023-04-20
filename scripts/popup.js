@@ -13,6 +13,7 @@ document.getElementById("save").onclick = () => {
 
   const save_key_macro_port = whale.runtime.connect({ name: `save_key_macro` });
   save_key_macro_port.postMessage(macro_array);
+  alert("저장 되었습니다.");
 };
 
 //사이드바 열릴 때

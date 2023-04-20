@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-    <title>부트스트랩 101 템플릿</title>
-
     <!-- 부트스트랩 -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -21,17 +19,28 @@
   </head>
   <body>
     <header>
-      <h1>텍스트 매크로</h1>
+      <h1 style="text-align: center">텍스트 매크로</h1>
     </header>
+
+    <div>
+      <button type="button" id="save" class="btn btn-default">저장</button>
+    </div>
+
     <div class="main">
       <h3>매크로 1</h3>
       <div>
         <span>단축키 : </span>
         <span>Ctrl + Shift + 1</span>
       </div>
+      <br />
+      <div>[내용]</div>
       <div>
-        <span>내용</span>
-        <textarea id="macro0"></textarea>
+        <textarea
+          id="macro0"
+          rows="3"
+          cols="40"
+          placeholder="내용을 입력하세요."
+        ></textarea>
       </div>
 
       <h3>매크로 2</h3>
@@ -39,9 +48,15 @@
         <span>단축키 : </span>
         <span>Ctrl + Shift + 2</span>
       </div>
+      <br />
+      <div>[내용]</div>
       <div>
-        <span>내용</span>
-        <textarea id="macro1"></textarea>
+        <textarea
+          id="macro1"
+          rows="3"
+          cols="40"
+          placeholder="내용을 입력하세요."
+        ></textarea>
       </div>
       <div></div>
 
@@ -50,9 +65,15 @@
         <span>단축키 : </span>
         <span>Ctrl + Shift + 3</span>
       </div>
+      <br />
+      <div>[내용]</div>
       <div>
-        <span>내용</span>
-        <textarea id="macro2"></textarea>
+        <textarea
+          id="macro2"
+          rows="3"
+          cols="40"
+          placeholder="내용을 입력하세요."
+        ></textarea>
       </div>
       <div></div>
 
@@ -61,13 +82,15 @@
         <span>단축키 : </span>
         <span>Ctrl + Shift + 4</span>
       </div>
+      <br />
+      <div>[내용]</div>
       <div>
-        <span>내용</span>
-        <textarea id="macro3"></textarea>
-      </div>
-
-      <div>
-        <button type="button" id="save" class="btn btn-default">저장</button>
+        <textarea
+          id="macro3"
+          rows="3"
+          cols="40"
+          placeholder="내용을 입력하세요."
+        ></textarea>
       </div>
     </div>
     <div class="bottom">
