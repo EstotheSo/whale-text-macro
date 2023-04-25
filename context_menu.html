@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+    <title>부트스트랩 101 템플릿</title>
+
     <!-- 부트스트랩 -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -22,83 +24,53 @@
       <h1 style="text-align: center">텍스트 매크로</h1>
     </header>
 
-    <div>
-      <button type="button" id="save" class="btn btn-default">저장</button>
-    </div>
-
     <div class="main">
-      <h3>매크로 1</h3>
       <div>
-        <span>단축키 : </span>
-        <span>Ctrl + Shift + 1</span>
-      </div>
-      <br />
-      <div>[내용]</div>
-      <div>
-        <textarea
-          id="macro0"
-          rows="3"
-          cols="40"
-          placeholder="내용을 입력하세요."
-        ></textarea>
+        <button type="button" id="add" class="btn btn-default">추가</button>
+
+        <button type="button" id="save" class="btn btn-default">저장</button>
       </div>
 
-      <h3>매크로 2</h3>
-      <div>
-        <span>단축키 : </span>
-        <span>Ctrl + Shift + 2</span>
-      </div>
       <br />
-      <div>[내용]</div>
-      <div>
-        <textarea
-          id="macro1"
-          rows="3"
-          cols="40"
-          placeholder="내용을 입력하세요."
-        ></textarea>
-      </div>
-      <div></div>
 
-      <h3>매크로 3</h3>
-      <div>
-        <span>단축키 : </span>
-        <span>Ctrl + Shift + 3</span>
-      </div>
-      <br />
-      <div>[내용]</div>
-      <div>
-        <textarea
-          id="macro2"
-          rows="3"
-          cols="40"
-          placeholder="내용을 입력하세요."
-        ></textarea>
-      </div>
-      <div></div>
+      <ul id="add_macro">
+        <li name="context_data">
+          <div>
+            <input
+              type="text"
+              name="context_input_title"
+              placeholder="제목"
+              size="35"
+              maxlength="51"
+            />
+          </div>
+          <div>
+            <textarea
+              name="context_input_content"
+              placeholder="내용을 입력하세요."
+              rows="3"
+              cols="35"
+            ></textarea>
 
-      <h3>매크로 4</h3>
-      <div>
-        <span>단축키 : </span>
-        <span>Ctrl + Shift + 4</span>
-      </div>
-      <br />
-      <div>[내용]</div>
-      <div>
-        <textarea
-          id="macro3"
-          rows="3"
-          cols="40"
-          placeholder="내용을 입력하세요."
-        ></textarea>
-      </div>
+            <button
+              type="button"
+              class="btn btn-default delete_btn"
+              style="display: block"
+            >
+              삭제
+            </button>
+          </div>
+          <br />
+        </li>
+      </ul>
     </div>
+
     <div class="bottom">
       <button id="shortcut">단축키 문구 지정</button>
       <button id="context">오른쪽 클릭 문구 지정</button>
     </div>
 
-    <script type="text/javascript" src="scripts/popup.js"></script>
+    <script type="text/javascript" src="scripts/context_menu_popup.js"></script>
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="bootstrap-3.3.2-dist/js/jquery.min.js"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
