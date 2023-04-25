@@ -75,12 +75,7 @@ whale.contextMenus.onClicked.addListener((clickData) => {
 function copyAndPasteTxt(txt) {
   navigator.clipboard.writeText(txt).then(() => {
     navigator.clipboard.readText().then((clipTxt) => {
-      if (document.getSelection) {
-        document.activeElement.value = txt;
-      } else {
-        document.activeElement.value += txt;
-      }
-      //document.activeElement.value += txt;
+      document.activeElement.value += txt;
     });
   });
 }
