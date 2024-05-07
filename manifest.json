@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "텍스트 매크로",
   "description": "단축키와 오른쪽 클릭 메뉴를 이용해서 지정 문구 붙여넣을 수 있습니다.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "sidebar_action": {
     "default_page": "index.html",
     "default_icon": {
@@ -23,7 +23,7 @@
   "commands": {
     "macro0": {
       "suggested_key": {
-        "default": "Ctrl+Shift+1",
+        "default": "Alt+Shift+1",
         "mac": "Command+Shift+1"
       },
       "description": "macro1",
@@ -31,7 +31,7 @@
     },
     "macro1": {
       "suggested_key": {
-        "default": "Ctrl+Shift+2",
+        "default": "Alt+Shift+2",
         "mac": "Command+Shift+2"
       },
       "description": "macro2",
@@ -39,7 +39,7 @@
     },
     "macro2": {
       "suggested_key": {
-        "default": "Ctrl+Shift+3",
+        "default": "Alt+Shift+3",
         "mac": "Command+Shift+3"
       },
       "description": "macro3",
@@ -47,7 +47,7 @@
     },
     "macro3": {
       "suggested_key": {
-        "default": "Ctrl+Shift+4",
+        "default": "Alt+Shift+4",
         "mac": "Command+Shift+4"
       },
       "description": "macro4",
