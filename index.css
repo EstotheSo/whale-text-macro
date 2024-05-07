@@ -7,6 +7,10 @@
   background-color: antiquewhite;
 }
 
+.lastContent {
+  padding-bottom: 80px;
+}
+
 #shortcut,
 #context {
   float: left;
