@@ -24,7 +24,7 @@
     "macro0": {
       "suggested_key": {
         "default": "Alt+Shift+1",
-        "mac": "Command+Shift+1"
+        "mac": "Command+Shift+6"
       },
       "description": "macro1",
       "global": true
@@ -32,7 +32,7 @@
     "macro1": {
       "suggested_key": {
         "default": "Alt+Shift+2",
-        "mac": "Command+Shift+2"
+        "mac": "Command+Shift+7"
       },
       "description": "macro2",
       "global": true
@@ -40,7 +40,7 @@
     "macro2": {
       "suggested_key": {
         "default": "Alt+Shift+3",
-        "mac": "Command+Shift+3"
+        "mac": "Command+Shift+8"
       },
       "description": "macro3",
       "global": true
@@ -48,7 +48,7 @@
     "macro3": {
       "suggested_key": {
         "default": "Alt+Shift+4",
-        "mac": "Command+Shift+4"
+        "mac": "Command+Shift+9"
       },
       "description": "macro4",
       "global": true
