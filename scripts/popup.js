@@ -16,6 +16,15 @@ document.getElementById("save").onclick = () => {
   alert("저장 되었습니다.");
 };
 
+//백업 버튼 누르면
+document.getElementById("backup").onclick = () => {
+  const backup_port = whale.runtime.connect({ name: `BACKUP` });
+  backup_port.postMessage("");
+};
+
+// 불러오기 버튼 누르면
+document.getElementById("load").onclick = () => {};
+
 //사이드바 열릴 때
 whale.sidebarAction.onClicked.addListener((result) => {
   if (result.opened) {

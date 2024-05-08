@@ -30,6 +30,15 @@ whale.runtime.onConnect.addListener((port) => {
       }
     });
   }
+
+  if (port.name === `BACKUP`) {
+    console.log("백업 요청 수신 완료");
+    const data = async(() => {
+      return whale.storage.sync.get(["cntxt_macro_data"]);
+    })();
+
+    console.log(data);
+  }
 });
 
 //extension이 처음 실행되었을 때 실행
