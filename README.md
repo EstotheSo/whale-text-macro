@@ -10,6 +10,7 @@ https://store.whale.naver.com/detail/bphadkjajekcgjbjheohcnghdodaieaj
 ##### 1. 단축키 변경
 
 as-is : Ctrl + Shift + 1,2,3,4
+<br />
 to-be : Ctrl + Shift + 6,7,8,9
 
 ##### 2. 매크로 내용 백업/불러오기 기능 추가
