@@ -25,9 +25,12 @@
     <div>
       <div class="btnGroup">
         <button type="button" id="save" class="btn btn-default">저장</button>
-        <button type="button" id="load" class="btn btn-default">
+
+        <label class="btn btn-default" for="load" id="loadLabel">
           불러오기
-        </button>
+        </label>
+        <input type="file" id="load" style="display: none" accept=".txt" />
+
         <button type="button" id="backup" class="btn btn-default">백업</button>
       </div>
     </div>

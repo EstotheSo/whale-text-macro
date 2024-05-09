@@ -22,8 +22,18 @@ document.getElementById("backup").onclick = () => {
   backup_port.postMessage("");
 };
 
-// 불러오기 버튼 누르면
-document.getElementById("load").onclick = () => {};
+//백업 파일 업로드
+const uploadTag = document.getElementById("load");
+uploadTag.addEventListener("change", () => {
+  const file = uploadTag.files[0];
+  const reader = new FileReader();
+
+  reader.readAsText(file, "UTF-8");
+  reader.onload = () => {
+    const upload_port = whale.runtime.connect({ name: "UPLOAD" });
+    upload_port.postMessage(reader.result);
+  };
+});
 
 //사이드바 열릴 때
 whale.sidebarAction.onClicked.addListener((result) => {
@@ -62,6 +72,16 @@ whale.runtime.onMessage.addListener((req, res, sendRes) => {
     };
 
     exportData(backupData);
+  }
+
+  if (req.SIGNAL === "UPLOAD_COMPLETE") {
+    alert("백업 데이터를 성공적으로 저장했습니다.");
+  }
+
+  if (req.SIGNAL === "UPLOAD_FAIL") {
+    alert(
+      "백업 데이터를 불러오는데 실패했습니다.\n백업 데이터 형식이 손상된 것 같습니다."
+    );
   }
 });
 

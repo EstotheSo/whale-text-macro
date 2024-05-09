@@ -21,7 +21,7 @@
 }
 
 #backup,
-#load {
+#loadLabel {
   float: right;
   margin-left: 10px;
 }

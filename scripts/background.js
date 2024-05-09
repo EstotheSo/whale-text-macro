@@ -1,7 +1,29 @@
+function initContxtMenu(arr) {
+  whale.contextMenus.removeAll();
+
+  for (let i = 0; i < arr.length; i++) {
+    let macro_title = Object.keys(arr[i])[0];
+
+    if (macro_title === "") {
+      macro_title = "빈 제목";
+    }
+
+    let contextMenuProp = {
+      id: i.toString(),
+      title: macro_title,
+      type: "normal",
+      contexts: ["all"],
+    };
+    //콘텍스트 메뉴 추가
+    whale.contextMenus.create(contextMenuProp);
+  }
+}
+
 // popup과 background 통신
 whale.runtime.onConnect.addListener(async (port) => {
   if (port.name === `save_key_macro`) {
     port.onMessage.addListener((msg) => {
+      console.log(msg);
       whale.storage.sync.set({ key_macro: msg });
     });
   }
@@ -9,31 +31,11 @@ whale.runtime.onConnect.addListener(async (port) => {
   if (port.name === `save_cntxt_data`) {
     port.onMessage.addListener((msg) => {
       whale.storage.sync.set({ cntxt_macro_data: msg });
-
-      whale.contextMenus.removeAll();
-
-      for (let i = 0; i < msg.length; i++) {
-        let macro_title = Object.keys(msg[i])[0];
-
-        if (macro_title === "") {
-          macro_title = "빈 제목";
-        }
-
-        let contextMenuProp = {
-          id: i.toString(),
-          title: macro_title,
-          type: "normal",
-          contexts: ["all"],
-        };
-        //콘텍스트 메뉴 추가
-        whale.contextMenus.create(contextMenuProp);
-      }
+      initContxtMenu(msg);
     });
   }
 
   if (port.name === `BACKUP`) {
-    console.log("백업 요청 수신 완료");
-
     const contxt = await whale.storage.sync.get(["cntxt_macro_data"]);
     const shortcut = await whale.storage.sync.get(["key_macro"]);
 
@@ -41,6 +43,25 @@ whale.runtime.onConnect.addListener(async (port) => {
       SIGNAL: "BACKUP_RES",
       CONTXT: contxt,
       SHORTCUT: shortcut,
+    });
+  }
+
+  if (port.name === "UPLOAD") {
+    port.onMessage.addListener((uploadData) => {
+      try {
+        const jsonData = JSON.parse(uploadData);
+
+        const shortcutObj = jsonData.shortcut.key_macro;
+        whale.storage.sync.set({ key_macro: shortcutObj });
+
+        const contxtArr = jsonData.contxt.cntxt_macro_data;
+        whale.storage.sync.set({ cntxt_macro_data: contxtArr });
+        initContxtMenu(contxtArr);
+
+        whale.runtime.sendMessage({ SIGNAL: "UPLOAD_COMPLETE" });
+      } catch (err) {
+        whale.runtime.sendMessage({ SIGNAL: "UPLOAD_FAIL" });
+      }
     });
   }
 });
