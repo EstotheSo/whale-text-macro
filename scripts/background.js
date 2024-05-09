@@ -1,5 +1,5 @@
 // popup과 background 통신
-whale.runtime.onConnect.addListener((port) => {
+whale.runtime.onConnect.addListener(async (port) => {
   if (port.name === `save_key_macro`) {
     port.onMessage.addListener((msg) => {
       whale.storage.sync.set({ key_macro: msg });
@@ -33,11 +33,15 @@ whale.runtime.onConnect.addListener((port) => {
 
   if (port.name === `BACKUP`) {
     console.log("백업 요청 수신 완료");
-    const data = async(() => {
-      return whale.storage.sync.get(["cntxt_macro_data"]);
-    })();
 
-    console.log(data);
+    const contxt = await whale.storage.sync.get(["cntxt_macro_data"]);
+    const shortcut = await whale.storage.sync.get(["key_macro"]);
+
+    whale.runtime.sendMessage({
+      SIGNAL: "BACKUP_RES",
+      CONTXT: contxt,
+      SHORTCUT: shortcut,
+    });
   }
 });
 

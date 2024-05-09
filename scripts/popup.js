@@ -53,3 +53,35 @@ function getKeyMacroData() {
     }
   });
 }
+
+whale.runtime.onMessage.addListener((req, res, sendRes) => {
+  if (req.SIGNAL === "BACKUP_RES") {
+    const backupData = {
+      contxt: req.CONTXT,
+      shortcut: req.SHORTCUT,
+    };
+
+    exportData(backupData);
+  }
+});
+
+function exportData(data_) {
+  let data = JSON.stringify(data_);
+  let fileBlob = new Blob([data], { type: "text/plain" });
+  let fileURL = URL.createObjectURL(fileBlob);
+  let fileName = `whale_txtmacro_backup_${getNow()}.txt`;
+
+  whale.downloads.download({
+    filename: fileName,
+    url: fileURL,
+    conflictAction: "uniquify",
+  });
+}
+
+function getNow() {
+  const now = new Date();
+
+  return `${now.getFullYear()}${
+    now.getMonth() + 1
+  }${now.getDate()}_${now.getHours()}${now.getMinutes()}${now.getSeconds()}`;
+}
