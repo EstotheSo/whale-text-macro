@@ -30,32 +30,32 @@
   "commands": {
     "macro0": {
       "suggested_key": {
-        "default": "Ctrl+Shift+6",
-        "mac": "Command+Shift+6"
+        "default": "Ctrl+Shift+1",
+        "mac": "Command+Shift+1"
       },
       "description": "macro1",
       "global": true
     },
     "macro1": {
       "suggested_key": {
-        "default": "Ctrl+Shift+7",
-        "mac": "Command+Shift+7"
+        "default": "Ctrl+Shift+2",
+        "mac": "Command+Shift+2"
       },
       "description": "macro2",
       "global": true
     },
     "macro2": {
       "suggested_key": {
-        "default": "Ctrl+Shift+8",
-        "mac": "Command+Shift+8"
+        "default": "Ctrl+Shift+3",
+        "mac": "Command+Shift+3"
       },
       "description": "macro3",
       "global": true
     },
     "macro3": {
       "suggested_key": {
-        "default": "Ctrl+Shift+9",
-        "mac": "Command+Shift+9"
+        "default": "Ctrl+Shift+4",
+        "mac": "Command+Shift+4"
       },
       "description": "macro4",
       "global": true
