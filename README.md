@@ -5,8 +5,16 @@ whale extension
 store url :
 https://store.whale.naver.com/detail/bphadkjajekcgjbjheohcnghdodaieaj
 
-### v1.1.0
+### v1.1.1
+##### 단축키 롤백
 
+as-is : Ctrl + Shift + 6,7,8,9
+<br />
+to-be : Ctrl + Shift + 1,2,3,4
+
+<hr />
+
+### v1.1.0
 ##### 1. 단축키 변경
 
 as-is : Ctrl + Shift + 1,2,3,4
