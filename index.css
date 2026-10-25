@@ -1,3 +1,131 @@
+:root {
+  --accent: #4f6ef7;
+  --accent-dark: #3b57d9;
+  --bg: #f5f6fa;
+  --card: #fff;
+  --border: #dfe3ec;
+  --text: #2b2f3a;
+  --muted: #7a8194;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans KR", sans-serif;
+}
+
+header h1 {
+  margin: 16px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.btnGroup {
+  margin: 0 16px 12px;
+  overflow: hidden;
+}
+
+.btnGroup .btn {
+  border-radius: 8px;
+  border-color: var(--border);
+  background: var(--card);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.btnGroup .btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#save {
+  float: left;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+#save:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+
+#backup,
+#loadLabel {
+  float: right;
+  margin-left: 8px;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+h3 {
+  margin: 20px 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.main > div > div:not(.bottom) {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+textarea {
+  resize: vertical;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.15);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+li[name="context_data"] {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+li[name="context_data"] input {
+  margin-bottom: 8px;
+}
+
+li[name="context_data"] br {
+  display: none;
+}
+
+.delete_btn {
+  margin-top: 8px;
+  border-radius: 8px;
+  color: #d64545;
+}
+
 .shell {
   padding-top: 80px;
 }
@@ -7,39 +135,25 @@
   bottom: 0px;
   left: 0px;
   width: 100%;
-  height: 5%;
-  background-color: antiquewhite;
+  min-height: 44px;
+  display: flex;
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
 }
 
 #shortcut,
 #context {
-  float: left;
-  width: 50%;
-  height: 100%;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
   text-align: center;
-  background-color: lightskyblue;
 }
 
-#backup,
-#loadLabel {
-  float: right;
-  margin-left: 10px;
-}
-
-.btnGroup {
-  margin-right: 30px;
-}
-
-.main {
-  width: 100%;
-  height: 500px;
-}
-
-.main > p {
-  height: 1%;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0px;
+#shortcut:hover,
+#context:hover {
+  background: var(--bg);
+  color: var(--accent);
 }
