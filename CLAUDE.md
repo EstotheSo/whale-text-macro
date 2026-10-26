@@ -26,7 +26,7 @@
 ### 1. 단축키 매크로
 - 개수 고정 4개. 사이드바 textarea id: `macro0`~`macro3`.
 - manifest `commands`의 이름도 `macro0`~`macro3`. **이름이 textarea id, 스토리지 키와 일치해야 한다.** 개수를 바꾸려면 manifest, index.html, popup.js의 `for (i = 0; i < 4; ...)` 세 곳을 같이 고친다.
-- 기본 키: Ctrl+Shift+1~4 (mac: Command+Shift+1~4), `global: true`.
+- 기본 키: Ctrl+Shift+1~4 (mac: Alt+Shift+1~4, 화면 표기는 Option), `global` 없음.
 - 스토리지: `whale.storage.sync` 키 `key_macro`, 값은 `{ macro0: "내용", macro2: "내용" }`. 빈 내용은 저장 시 생략된다.
 
 ### 2. 오른쪽 클릭 매크로
@@ -68,7 +68,6 @@
 - `background.js`의 `onMessage` 대신 포트 + `runtime.sendMessage` 혼용. 응답은 popup.js의 `whale.runtime.onMessage`가 받는다.
 - popup.js, context_menu_popup.js에 선언 없는 전역 변수(`i`, `key`, `data`, `keyOfData`)가 있다. 건드릴 때 `let`으로 바꿔도 무방.
 - `getContextData`에서 `Object.keys(...)` 배열을 그대로 `.value`에 대입한다(문자열 변환에 의존).
-- index.html의 "Shfit" 오타가 이미 있다 (Mac 단축키 안내 문구).
 - 권한은 `host_permissions: *://*/*` 포함 넓은 편. 스토어 심사에 영향이 있으니 늘리지 말 것.
 - 단축키 이력: v1.1.0에서 Ctrl+Shift+6~9로 바꿨다가 v1.1.1에서 1~4로 롤백. 단축키 변경은 사용자에게 영향이 크므로 신중히.
 
