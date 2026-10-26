@@ -46,6 +46,11 @@ header h1 {
   color: #fff;
 }
 
+#add,
+#save {
+  margin-right: 8px;
+}
+
 #save:hover {
   background: var(--accent-dark);
   border-color: var(--accent-dark);
