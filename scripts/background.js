@@ -23,7 +23,6 @@ function initContxtMenu(arr) {
 whale.runtime.onConnect.addListener(async (port) => {
   if (port.name === `save_key_macro`) {
     port.onMessage.addListener((msg) => {
-      console.log(msg);
       whale.storage.sync.set({ key_macro: msg });
     });
   }
@@ -98,13 +97,25 @@ whale.contextMenus.onClicked.addListener((clickData) => {
           whale.scripting.executeScript({
             target: { tabId: tabs[0].id, allFrames: true },
             func: copyAndPasteTxt,
-            args: [cntxtMacroDataContent],
+            args: [applyVariables(cntxtMacroDataContent)],
           });
         });
       }
     });
   }
 });
+
+// 매크로 변수. {{ day }}처럼 괄호 안 공백은 무시하고, 모르는 변수는 그대로 둔다.
+const MACRO_VARIABLES = {
+  day: () => new Date().toLocaleDateString("ko-KR", { weekday: "long" }),
+};
+
+function applyVariables(txt) {
+  return txt.replace(/\{\{\s*(\w+)\s*\}\}/g, (match, name) => {
+    const getValue = MACRO_VARIABLES[name.toLowerCase()];
+    return getValue ? getValue() : match;
+  });
+}
 
 function copyAndPasteTxt(txt) {
   navigator.clipboard.writeText(txt).then(() => {
@@ -123,7 +134,7 @@ whale.commands.onCommand.addListener((command) => {
           whale.scripting.executeScript({
             target: { tabId: tabs[0].id, allFrames: true },
             func: copyAndPasteTxt,
-            args: [res.key_macro[command]],
+            args: [applyVariables(res.key_macro[command])],
           });
         });
       }

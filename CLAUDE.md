@@ -58,6 +58,10 @@
 - `allFrames: true`라서 여러 프레임에서 실행된다. 포커스 없는 프레임에서는 `activeElement`가 body라 무해하지만 에러가 날 수 있다.
 - `readText` 호출은 결과를 쓰지 않는 잔재 코드.
 
+## 매크로 변수
+
+붙여넣기 직전에 background.js의 `applyVariables`가 `{{변수}}`를 치환한다 (괄호 안 공백 무시, 모르는 변수는 원문 유지). 변수 추가는 `MACRO_VARIABLES`에 항목만 넣으면 된다. 현재: `{{day}}` = 오늘 요일(예: "월요일", ko-KR).
+
 ## 알려진 주의점
 
 - 컨텍스트 메뉴는 **저장/불러오기 시에만** 재생성된다 (`initContxtMenu`). `onInstalled`는 `install`일 때만 placeholder를 만들고, 브라우저 시작이나 업데이트 시 메뉴를 복원하는 코드는 없다.
