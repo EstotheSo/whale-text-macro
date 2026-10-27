@@ -21,6 +21,63 @@ header h1 {
   font-weight: 700;
 }
 
+header {
+  position: relative;
+}
+
+.varLink {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.varLink:hover {
+  color: var(--accent);
+}
+
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 60px);
+  /* 투명한 dialog 영역이 배경 클릭(닫기)을 가로채지 않게 한다 */
+  pointer-events: none;
+}
+
+.modal-content {
+  pointer-events: auto;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+.varSection h5 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.varSection p {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.varList {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 12px;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--border);
+}
+
 .btnGroup {
   margin: 0 16px 12px;
   overflow: hidden;

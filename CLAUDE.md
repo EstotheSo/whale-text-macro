@@ -61,6 +61,7 @@
 ## 매크로 변수
 
 붙여넣기 직전에 background.js의 `applyVariables`가 `{{변수}}`를 치환한다 (괄호 안 공백 무시, 모르는 변수는 원문 유지). 변수 추가는 `MACRO_VARIABLES`에 항목만 넣으면 된다. 현재: `{{day}}` = 오늘 요일(예: "월요일", ko-KR).
+변수를 추가하면 `scripts/var_modal.js`의 `MACRO_VARIABLE_DOCS`(두 화면 공통 "변수 목록" 모달)도 같이 고친다.
 
 ## 알려진 주의점
 
