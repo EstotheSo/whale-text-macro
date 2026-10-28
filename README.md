@@ -5,6 +5,17 @@ whale extension
 store url :
 https://store.whale.naver.com/detail/bphadkjajekcgjbjheohcnghdodaieaj
 
+### v1.2.0
+##### 1. 스타일 개선
+
+##### 2. 변수 기능 추가
+
+매크로 내용에 `{{day}}`, `{{date}}` 같은 변수를 적으면 붙여넣을 때 값으로 치환
+<br />
+상단 "변수 목록"에서 사용 가능한 변수 확인
+
+<hr />
+
 ### v1.1.1
 ##### 단축키 롤백
 
