@@ -14,7 +14,7 @@ const MACRO_VARIABLE_DOCS = [
 
 document.querySelector("header").insertAdjacentHTML(
   "beforeend",
-  `<a href="#" class="varLink" data-toggle="modal" data-target="#varModal">변수 목록</a>`
+  `<a href="#" class="varLink" data-toggle="modal" data-target="#varModal">📘 변수 목록</a>`
 );
 
 document.body.insertAdjacentHTML(
