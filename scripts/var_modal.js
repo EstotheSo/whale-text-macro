@@ -1,7 +1,15 @@
 // "변수 목록" 링크와 모달. index.html, context_menu.html 공통으로 사용한다.
 // 변수를 추가하면 background.js의 MACRO_VARIABLES와 이 목록을 같이 고친다.
 const MACRO_VARIABLE_DOCS = [
-  { name: "{{day}}", desc: "오늘 요일로 치환됩니다. (예: 월요일)" },
+  { name: "{{day}}", desc: "오늘 요일 (예: 월요일)" },
+  { name: "{{date}}", desc: "오늘 날짜 (예: 2026-10-28)" },
+  { name: "{{year}}", desc: "연도 (예: 2026)" },
+  { name: "{{month}}", desc: "월 (예: 10)" },
+  { name: "{{dayofmonth}}", desc: "일 (예: 28)" },
+  { name: "{{time}}", desc: "현재 시각 (예: 14:05)" },
+  { name: "{{datetime}}", desc: "날짜와 시각 (예: 2026-10-28 14:05)" },
+  { name: "{{yesterday}}", desc: "어제 날짜 (예: 2026-10-27)" },
+  { name: "{{tomorrow}}", desc: "내일 날짜 (예: 2026-10-29)" },
 ];
 
 document.querySelector("header").insertAdjacentHTML(

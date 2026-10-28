@@ -106,8 +106,26 @@ whale.contextMenus.onClicked.addListener((clickData) => {
 });
 
 // 매크로 변수. {{ day }}처럼 괄호 안 공백은 무시하고, 모르는 변수는 그대로 둔다.
+const pad2 = (n) => String(n).padStart(2, "0");
+const formatDate = (d) =>
+  `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+const formatTime = (d) => `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+const addDays = (n) => {
+  const d = new Date();
+  d.setDate(d.getDate() + n);
+  return d;
+};
+
 const MACRO_VARIABLES = {
   day: () => new Date().toLocaleDateString("ko-KR", { weekday: "long" }),
+  date: () => formatDate(new Date()),
+  year: () => String(new Date().getFullYear()),
+  month: () => String(new Date().getMonth() + 1),
+  dayofmonth: () => String(new Date().getDate()),
+  time: () => formatTime(new Date()),
+  datetime: () => `${formatDate(new Date())} ${formatTime(new Date())}`,
+  yesterday: () => formatDate(addDays(-1)),
+  tomorrow: () => formatDate(addDays(1)),
 };
 
 function applyVariables(txt) {
